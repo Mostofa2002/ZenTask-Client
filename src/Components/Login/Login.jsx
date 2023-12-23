@@ -2,14 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import Googlebtn from "./Googlebtn";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
-
+import Google from "../Google/Google";
 const Login = () => {
   const [error, setError] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const { signIn } = useAuth();
   const navigate = useNavigate();
   const {
@@ -17,7 +13,6 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
   const onSubmit = (data) => {
     signIn(data.email, data.password)
       .then((result) => {
@@ -28,7 +23,7 @@ const Login = () => {
           icon: "success",
           confirmButtonText: "Done",
         });
-        navigate(location?.state ? location?.state : "/");
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
@@ -37,111 +32,68 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-black">
-      <Helmet>
-        <title>Login | ZenTask </title>
-      </Helmet>
-      <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-black">
-        <div className="mb-8 text-center">
-          <h1 className="my-3 text-4xl font-bold">Log In</h1>
-          <p className="text-xl text-gray-400">
-            Sign in to access your account
-          </p>
+    <div>
+      <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
+        <div className="flex  justify-center mx-auto mt-2">
+          <h1 className="text-2xl font-bold">Welcome, Login here!!</h1>
         </div>
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          noValidate=""
-          action=""
-          className="space-y-6 ng-untouched ng-pristine ng-valid"
-        >
-          <div className="space-y-4">
-            <div>
-              <label htmlFor="email" className="block mb-2 text-sm">
-                Email address
-              </label>
-              <input
-                type="email"
-                {...register("email", { required: true })}
-                name="email"
-                required
-                placeholder="Enter Your Email Here"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-fuchsia-500 bg-gray-200 text-gray-900"
-                data-temp-mail-org="0"
-              />
-              {errors.email && (
-                <span className="text-red-600">Email is required</span>
-              )}
-            </div>
-            <div>
-              <label htmlFor="password" className="text-sm mb-2">
-                Password
-              </label>
-              <div className="relative">
-                <input
-                  type={showPassword ? "text" : "password"} // Toggle password visibility based on state
-                  {...register("password", { required: true })}
-                  name="password"
-                  autoComplete="current-password"
-                  id="password"
-                  required
-                  placeholder="*******"
-                  className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-fuchsia-500 bg-gray-200 text-gray-900 pr-10" // Added padding for the button
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-2 text-fuchsia-500 hover:text-fuchsia-700 focus:outline-none"
-                >
-                  {showPassword ? (
-                    <FaEyeSlash className="text-2xl" />
-                  ) : (
-                    <FaEye className="text-2xl" />
-                  )}
-                </button>
-              </div>
-              {errors.password && (
-                <span className="text-red-600">Password is required</span>
-              )}
-              {error && (
-                <p className="text-red-700 font-bold mt-5  ">
-                  <i className="fa-solid fa-triangle-exclamation"></i> {error}
-                </p>
-              )}
-            </div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="mt-4 form-control">
+            <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
+              Email Address
+            </label>
+            <input
+              {...register("email", { required: true })}
+              name="email"
+              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+              type="email"
+            />
+            {errors.email && (
+              <span className="text-red-600">Email is required</span>
+            )}
           </div>
 
-          <div>
-            <button
-              type="submit"
-              className="bg-fuchsia-500 w-full rounded-md py-3 text-white"
-            >
-              Log In
+          <div className="mt-4 form-control">
+            <div className="flex justify-between">
+              <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200">
+                Password
+              </label>
+            </div>
+
+            <input
+              {...register("password", { required: true })}
+              name="password"
+              className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300"
+              type="password"
+            />
+            {errors.password && (
+              <span className="text-red-600">password is required</span>
+            )}
+            {error && (
+              <p className="text-red-700 font-bold mt-5  ">
+                {" "}
+                <i className="fa-solid fa-triangle-exclamation"></i> {error}
+              </p>
+            )}
+          </div>
+          <div className="mt-6 form-control">
+            <button className="w-full px-6 py-3 text-base font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+              LogIn
             </button>
           </div>
         </form>
-        <div className="space-y-1">
-          <button className="text-xs hover:underline hover:text-fuchsia-500 text-gray-400">
-            Forgot password?
-          </button>
-        </div>
-        <div className="flex items-center pt-4 space-x-1">
-          <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-          <p className="px-3 text-sm dark:text-gray-400">
-            Login with social accounts
+        <Google />
+        <Link to="/register">
+          <p className="mt-8 text-lg text-center font-light  text-gray-600">
+            Do not have an account?
+            <a
+              href="#"
+              className=" ml-2 font-medium text-green-400 hover:underline"
+            >
+              Register
+            </a>
           </p>
-          <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-        </div>
-        <Googlebtn />
-        <p className="px-6 text-sm text-center text-gray-400">
-          Don&apos;t have an account yet?{" "}
-          <Link
-            to="/signup"
-            className="hover:underline hover:text-fuchsia-500 text-gray-600"
-          >
-            Sign up
-          </Link>
-          .
-        </p>
+        </Link>
       </div>
     </div>
   );

@@ -1,17 +1,17 @@
 import { createContext, useEffect, useState } from "react";
+import { auth } from "./../firebase/firebase.config";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
-  getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { app } from "./../Firebase/firebase.config";
+
 export const AuthContext = createContext(null);
-const auth = getAuth(app);
+
 const provider = new GoogleAuthProvider();
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
@@ -29,8 +29,14 @@ const AuthProvider = ({ children }) => {
   };
 
   const logOut = () => {
+    console.log("wel");
     setLoading(true);
-    return signOut(auth);
+    console.log("hello");
+    return signOut(auth)
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+      });
   };
   const googleLogin = () => {
     setLoading(true);
@@ -49,7 +55,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
 
-      console.log("current user", currentUser);
+      //   console.log("current user", currentUser);
       setLoading(false);
     });
     return () => {

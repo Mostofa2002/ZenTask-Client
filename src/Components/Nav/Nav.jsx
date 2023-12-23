@@ -1,9 +1,12 @@
 import { useState } from "react";
 import Logo from "../Logo/Logo";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Nav = () => {
+  const { user, logOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div>
       <nav
@@ -81,9 +84,22 @@ const Nav = () => {
               <NavLink className="  font-bold text-xl my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-green-500 dark:hover:text-blue-400 md:mx-4 md:my-0">
                 Blog
               </NavLink>
-              <NavLink className="  font-bold text-xl my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-green-500 dark:hover:text-blue-400 md:mx-4 md:my-0">
-                Login
-              </NavLink>
+              {user ? (
+                <button
+                  onClick={() => {
+                    logOut();
+                  }}
+                  className=" font-bold text-xl my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-green-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
+                >
+                  LogOut
+                </button>
+              ) : (
+                <Link to="/login">
+                  <button className=" font-bold text-xl my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-green-500 dark:hover:text-blue-400 md:mx-4 md:my-0">
+                    Login
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
