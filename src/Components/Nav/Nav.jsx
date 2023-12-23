@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Logo from "./../Logo/Logo";
+import Logo from "../Logo/Logo";
+import { NavLink } from "react-router-dom";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,37 +68,22 @@ const Nav = () => {
             }`}
           >
             <div className="flex flex-col md:flex-row md:mx-6">
-              <a
-                className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
-                href="#"
-              >
+              <NavLink className=" font-bold text-xl my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-green-500 dark:hover:text-blue-400 md:mx-4 md:my-0">
                 Home
-              </a>
-              <a
-                className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
-                href="#"
-              >
+              </NavLink>
+              <NavLink className=" font-bold  text-xl my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-green-500 dark:hover:text-blue-400 md:mx-4 md:my-0">
                 Dashboard
-              </a>
+              </NavLink>
 
-              <a
-                className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
-                href="#"
-              >
+              <NavLink className="  font-bold text-xl my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-green-500 dark:hover:text-blue-400 md:mx-4 md:my-0">
                 About
-              </a>
-              <a
-                className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
-                href="#"
-              >
+              </NavLink>
+              <NavLink className="  font-bold text-xl my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-green-500 dark:hover:text-blue-400 md:mx-4 md:my-0">
                 Blog
-              </a>
-              <a
-                className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
-                href="#"
-              >
+              </NavLink>
+              <NavLink className="  font-bold text-xl my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-green-500 dark:hover:text-blue-400 md:mx-4 md:my-0">
                 Login
-              </a>
+              </NavLink>
             </div>
           </div>
         </div>
