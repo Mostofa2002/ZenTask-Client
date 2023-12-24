@@ -27,7 +27,7 @@ const Banner = () => {
 
           <div className="flex items-center justify-center w-full h-[450px] lg:w-1/2">
             <img
-              className="object-cover w-full h-full max-w-2xl rounded-md"
+              className="object-cover  w-full h-full max-w-2xl rounded-md animate-pulse "
               src="https://i.ibb.co/x1fPkHS/project-task-management-and-effective-time-planning-tools-project-development-icon-3d-vector-illustr.png"
               alt=""
             />

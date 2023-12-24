@@ -1,33 +1,48 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import Google from "../Google/Google";
+import useAxiosPublic from "./../../hooks/useAxiosPublic";
 
 const Register = () => {
   const { createUser, updateUserProfile } = useAuth();
-  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
-
+    reset,
     formState: { errors },
   } = useForm();
+  const axiosPublic = useAxiosPublic();
+
   const onSubmit = (data) => {
     console.log(data);
     createUser(data.email, data.password).then((result) => {
       console.log(result.user);
-      updateUserProfile(data.name, data.photoURL)
-        .then(() => {
-          Swal.fire({
-            title: "Successfully!",
-            text: "You registered successfully",
-            icon: "success",
-            confirmButtonText: "Done",
-          });
-          navigate("/");
-        })
-        .catch((error) => console.log(error));
+      updateUserProfile(data.name, data.photoURL).then(() => {
+        const userInfo = {
+          name: data.name,
+          email: data.email,
+          image: data.photoURL,
+        };
+        console.log(userInfo);
+        axiosPublic
+          .post("/app-users", userInfo)
+          .then((res) => {
+            if (res.data.insertedId) {
+              console.log("user created successfully");
+              reset();
+              Swal.fire({
+                title: "Wow!",
+                text: "Sign Up Successfully",
+                icon: "success",
+                confirmButtonText: "Okay",
+              });
+            }
+          })
+          .catch((error) => console.log(error));
+      });
     });
   };
   return (
