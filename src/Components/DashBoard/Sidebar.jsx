@@ -1,13 +1,11 @@
 import { useState } from "react";
-// Components
-
+import MenuItem from "./MenuItem";
 import { FaHome } from "react-icons/fa";
 import { FaTasks } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { MdOutlineAddTask } from "react-icons/md";
-import { CgProfile } from "react-icons/cg";
-
-import MenuItem from "./Menuitem";
+import { BsGraphUp } from "react-icons/bs";
+import DashTittle from "./DashTitle";
 
 const Sidebar = () => {
   const [isActive, setActive] = useState(false);
@@ -18,10 +16,16 @@ const Sidebar = () => {
   return (
     <>
       {/* Small Screen Navbar */}
-      <div className="bg-black text-fus flex justify-between md:hidden">
+      <div className="bg-green-600  flex justify-between md:hidden">
+        <div>
+          <div className="block cursor-pointer p-4 font-bold">
+            <DashTittle />
+          </div>
+        </div>
+
         <button
           onClick={handleToggle}
-          className="mobile-menu-button text-2xl text-fuchsia-500 p-4 
+          className="mobile-menu-button text-2xl text-white p-4 
           "
         >
           <IoMenu />
@@ -29,13 +33,15 @@ const Sidebar = () => {
       </div>
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-black w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-green-600  w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
           isActive && "-translate-x-full"
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
         <div>
           <div>
-            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center  mx-auto"></div>
+            <div className="w-full hidden md:flex px-4 py-2 rounded-lg justify-center items-center  mx-auto">
+              <DashTittle />
+            </div>
           </div>
 
           {/* Nav Items */}
@@ -43,9 +49,9 @@ const Sidebar = () => {
             <nav>
               <MenuItem icon={FaHome} label="Home" address="/" />
               <MenuItem
-                icon={CgProfile}
-                label="Profile"
-                address="/dashboard/profile"
+                icon={BsGraphUp}
+                label="Statics"
+                address="/dashboard/Statics"
               />
               <MenuItem
                 icon={FaTasks}

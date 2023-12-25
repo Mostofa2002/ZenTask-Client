@@ -13,34 +13,43 @@ const UserSection = () => {
           </h2>
 
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-200">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-            dolores deserunt ea doloremque natus error, rerum quas odio quaerat
-            nam ex commodi hic, suscipit in a veritatis pariatur minus
-            consequuntur!
+            Task Manager provides a range of benefits for users in managing and
+            optimizing their computer systems. One of its key advantages is the
+            ability to monitor system performance in real-time, offering
+            insights into CPU usage, memory utilization, disk activity, and
+            network performance. This information is crucial for identifying
+            resource-intensive processes and troubleshooting performance issues
+            efficiently.
           </p>
         </div>
         <div className="w-full max-w-md px-8 py-4 mt-16 bg-white rounded-lg shadow-lg border border-green-600 dark:bg-gray-800">
           <h2 className="mt-2 text-xl font-semibold text-gray-800 dark:text-white md:mt-0">
-            Developer
+            corporate professional
           </h2>
 
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-200">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-            dolores deserunt ea doloremque natus error, rerum quas odio quaerat
-            nam ex commodi hic, suscipit in a veritatis pariatur minus
-            consequuntur!
+            Task Manager provides a range of benefits for users in managing and
+            optimizing their computer systems. One of its key advantages is the
+            ability to monitor system performance in real-time, offering
+            insights into CPU usage, memory utilization, disk activity, and
+            network performance. This information is crucial for identifying
+            resource-intensive processes and troubleshooting performance issues
+            efficiently.
           </p>
         </div>
         <div className="w-full max-w-md px-8 py-4 mt-16 bg-white rounded-lg shadow-lg border border-green-600 dark:bg-gray-800">
           <h2 className="mt-2 text-xl font-semibold text-gray-800 dark:text-white md:mt-0">
-            Developer
+            bankers
           </h2>
 
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-200">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-            dolores deserunt ea doloremque natus error, rerum quas odio quaerat
-            nam ex commodi hic, suscipit in a veritatis pariatur minus
-            consequuntur!
+            Task Manager provides a range of benefits for users in managing and
+            optimizing their computer systems. One of its key advantages is the
+            ability to monitor system performance in real-time, offering
+            insights into CPU usage, memory utilization, disk activity, and
+            network performance. This information is crucial for identifying
+            resource-intensive processes and troubleshooting performance issues
+            efficiently.
           </p>
         </div>
       </div>

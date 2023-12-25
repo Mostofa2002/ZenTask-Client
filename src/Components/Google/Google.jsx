@@ -1,20 +1,30 @@
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Google = () => {
   const { googleLogin } = useAuth();
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
   const handleGoogle = () => {
-    googleLogin().then((result) => {
-      console.log(result.user);
-      Swal.fire({
-        title: "Successfully!",
-        text: "You login with Google ",
-        icon: "success",
-        confirmButtonText: "Done",
+    googleLogin().then((res) => {
+      console.log(res.user);
+      const userInfo = {
+        email: res.user?.email,
+        name: res.user?.displayName,
+        image: res.user?.photoURL,
+      };
+      axiosPublic.post("/app-users", userInfo).then((res) => {
+        console.log(res.data);
+        Swal.fire({
+          title: "Successfully!",
+          text: "You login with google ",
+          icon: "success",
+          confirmButtonText: "Done",
+        });
+        navigate("/dashboard/Statics");
       });
-      navigate("/");
     });
   };
   return (

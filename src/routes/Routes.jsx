@@ -6,6 +6,11 @@ import Register from "../Components/Register/Register";
 import Blog from "../Components/Blog/Blog";
 import Team from "../Components/Team/Team";
 import DashBoard from "../Components/DashBoard/DashBoard";
+import AddTask from "../Components/DashBoard/AddTask";
+import AllTask from "../Components/DashBoard/AllTask";
+import UpdateTask from "./../Components/DashBoard/TaskUpdate/UpdateTask";
+import Statics from "../Components/DashBoard/Statics";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -25,19 +30,29 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashBoard />,
+    element: (
+      <PrivateRoute>
+        <DashBoard />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboard/all-task",
-        element: <></>,
+        element: <AllTask />,
       },
       {
         path: "/dashboard/add-task",
-        element: <></>,
+        element: <AddTask />,
       },
       {
-        path: "/dashboard/profile",
-        element: <></>,
+        path: "/dashboard/Statics",
+        element: <Statics />,
+      },
+      {
+        path: "/dashboard/updateTask/:id",
+        element: <UpdateTask />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:8000/task-update/${params?.id}`),
       },
     ],
   },
