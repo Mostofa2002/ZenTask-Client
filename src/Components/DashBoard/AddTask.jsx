@@ -36,7 +36,7 @@ const AddTask = () => {
 
     console.log(PostedTaskData);
 
-    fetch("http://localhost:8000/added-tasks", {
+    fetch("https://task-server-mocha.vercel.app/added-tasks", {
       method: "POST",
       headers: {
         "content-type": "application/json",

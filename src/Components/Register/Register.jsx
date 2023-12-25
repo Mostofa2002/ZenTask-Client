@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
@@ -15,7 +15,7 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const axiosPublic = useAxiosPublic();
-
+  const navigate = useNavigate();
   const onSubmit = (data) => {
     console.log(data);
     createUser(data.email, data.password).then((result) => {
@@ -39,6 +39,7 @@ const Register = () => {
                 icon: "success",
                 confirmButtonText: "Okay",
               });
+              navigate("/dashboard/Statics");
             }
           })
           .catch((error) => console.log(error));

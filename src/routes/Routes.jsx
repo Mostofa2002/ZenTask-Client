@@ -52,7 +52,9 @@ const router = createBrowserRouter([
         path: "/dashboard/updateTask/:id",
         element: <UpdateTask />,
         loader: ({ params }) =>
-          fetch(`http://localhost:8000/task-update/${params?.id}`),
+          fetch(
+            `https://task-server-mocha.vercel.app/task-update/${params?.id}`
+          ),
       },
     ],
   },

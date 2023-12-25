@@ -43,7 +43,7 @@ const ToDo = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:8000/task-delete/${id}`, {
+        fetch(`https://task-server-mocha.vercel.app/task-delete/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -39,7 +39,7 @@ const UpdateTask = () => {
       creatorEmail,
     };
     console.log(TaskUpdate);
-    fetch(`http://localhost:8000/updatedTask/${_id}`, {
+    fetch(`https://task-server-mocha.vercel.app/updatedTask/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

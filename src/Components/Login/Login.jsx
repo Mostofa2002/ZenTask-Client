@@ -23,7 +23,7 @@ const Login = () => {
           icon: "success",
           confirmButtonText: "Done",
         });
-        navigate("/");
+        navigate("/dashboard/Statics");
       })
       .catch((err) => {
         console.log(err);
